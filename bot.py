@@ -7,8 +7,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-
-load_dotenv()  
+load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 COMMAND_PREFIX = os.getenv("COMMAND_PREFIX", "!")
@@ -35,11 +34,12 @@ async def admin_only_check(ctx: commands.Context) -> bool:
         return True
     raise commands.MissingPermissions(["administrator"])
 
+
 class MyBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
         intents.message_content = True  # メッセージ内容を使う場合は必須
-        intents.members = True          # メンバー情報を使う場合
+        intents.members = True  # メンバー情報を使う場合
 
         super().__init__(
             command_prefix=COMMAND_PREFIX,
@@ -122,6 +122,8 @@ async def reload_all(ctx):
     for extension in list(bot.extensions.keys()):
         await bot.reload_extension(extension)
     await ctx.send("すべての Cog をリロードしました。")
+
+
 async def main():
     if not TOKEN:
         raise RuntimeError(

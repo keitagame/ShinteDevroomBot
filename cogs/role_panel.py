@@ -76,7 +76,9 @@ class RolePanelSelect(discord.ui.Select):
         to_remove_ids = (panel_role_ids - selected_ids) & current_ids
 
         to_add = [guild.get_role(rid) for rid in to_add_ids if guild.get_role(rid)]
-        to_remove = [guild.get_role(rid) for rid in to_remove_ids if guild.get_role(rid)]
+        to_remove = [
+            guild.get_role(rid) for rid in to_remove_ids if guild.get_role(rid)
+        ]
 
         try:
             if to_add:

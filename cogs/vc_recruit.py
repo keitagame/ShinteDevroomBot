@@ -12,7 +12,7 @@ from discord.ext import commands
 logger = logging.getLogger("bot.vc_recruit")
 
 DATA_DIR = Path(__file__).parent.parent / "data"
-CHANNELS_FILE = DATA_DIR / "vc_channels.json"   # {channel_id: message_id}
+CHANNELS_FILE = DATA_DIR / "vc_channels.json"  # {channel_id: message_id}
 
 BUTTON_CUSTOM_ID = "vc:recruit_button"
 
