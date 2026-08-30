@@ -30,7 +30,9 @@ class TicketView(discord.ui.View):
         self.cog = cog
         self.open_ticket_button.label = button_label
 
-    @discord.ui.button(style=discord.ButtonStyle.primary, custom_id=OPEN_BUTTON_CUSTOM_ID)
+    @discord.ui.button(
+        style=discord.ButtonStyle.primary, custom_id=OPEN_BUTTON_CUSTOM_ID
+    )
     async def open_ticket_button(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -127,7 +129,11 @@ class Ticket(commands.Cog):
 
         # 既に本人のチケットが開いていないか確認（1人1つまで）
         existing_channel_id = next(
-            (cid for cid, uid in self.ticket_creators.items() if uid == interaction.user.id),
+            (
+                cid
+                for cid, uid in self.ticket_creators.items()
+                if uid == interaction.user.id
+            ),
             None,
         )
         if existing_channel_id is not None:
@@ -163,7 +169,9 @@ class Ticket(commands.Cog):
             interaction.user: discord.PermissionOverwrite(
                 view_channel=True, send_messages=True, read_message_history=True
             ),
-            guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True),
+            guild.me: discord.PermissionOverwrite(
+                view_channel=True, send_messages=True
+            ),
         }
 
         try:

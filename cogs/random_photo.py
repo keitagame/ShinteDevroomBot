@@ -27,8 +27,7 @@ class RandomPhoto(commands.Cog):
             return
 
         png_files = [
-            p for p in PHOTO_DIR.iterdir()
-            if p.is_file() and p.suffix.lower() == ".png"
+            p for p in PHOTO_DIR.iterdir() if p.is_file() and p.suffix.lower() == ".png"
         ]
 
         if not png_files:
